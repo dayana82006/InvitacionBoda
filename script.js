@@ -260,11 +260,14 @@ if (rsvpForm) {
         
         if (GOOGLE_SHEETS_URL) {
             try {
-                await fetch(GOOGLE_SHEETS_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
+                const params = new URLSearchParams({
+                    name: formData.name,
+                    attendance: formData.attendance || '',
+                    allergies: formData.allergies,
+                    message: formData.message,
+                    timestamp: formData.timestamp
                 });
+                await fetch(GOOGLE_SHEETS_URL + '?' + params.toString(), { method: 'GET' });
             } catch (err) {}
         }
         
