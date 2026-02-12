@@ -12,21 +12,24 @@ function tryPlayMusic() {
     }).catch(() => {});
 }
 
-// Intentar reproducir al terminar el loader
+// Loader: se cierra al tocar/clic (garantiza que la música empiece al "abrir")
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
-    setTimeout(() => {
+    let closed = false;
+    
+    function closeLoaderAndPlay() {
+        if (closed) return;
+        closed = true;
         loader.classList.add('hidden');
-        setTimeout(() => {
-            loader.style.display = 'none';
-            tryPlayMusic();
-        }, 600);
-    }, 1000);
+        tryPlayMusic();
+        setTimeout(() => { loader.style.display = 'none'; }, 600);
+    }
+    
+    loader.addEventListener('click', closeLoaderAndPlay, { once: true });
+    loader.addEventListener('touchstart', closeLoaderAndPlay, { once: true, passive: true });
+    
+    setTimeout(closeLoaderAndPlay, 3000);
 });
-
-// Reproducir en primer toque/clic (los navegadores bloquean autoplay hasta interacción)
-document.addEventListener('click', () => tryPlayMusic(), { once: true });
-document.addEventListener('touchstart', () => tryPlayMusic(), { once: true, passive: true });
 
 // ============================================
 // LOADING SCREEN
@@ -235,12 +238,16 @@ document.getElementById('qrIcon')?.addEventListener('click', () => {
 
 // ============================================
 // FORMULARIO RSVP
+// Guardado: 1) Formspree (envía por email) 2) localStorage (respaldo)
+// Para recibir las confirmaciones por email: crea un form en https://formspree.io
+// y reemplaza 'TU_FORM_ID' por tu ID (ej: xyzabcde)
 // ============================================
+const FORMSPREE_ID = 'xdalarnp';
 const rsvpForm = document.getElementById('rsvpForm');
 const rsvpSuccess = document.getElementById('rsvpSuccess');
 
 if (rsvpForm) {
-    rsvpForm.addEventListener('submit', (e) => {
+    rsvpForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const formData = {
@@ -252,27 +259,22 @@ if (rsvpForm) {
             timestamp: new Date().toISOString()
         };
         
-        // Guardar en localStorage
-        const existingRSVPs = JSON.parse(localStorage.getItem('rsvps') || '[]');
-        existingRSVPs.push(formData);
-        localStorage.setItem('rsvps', JSON.stringify(existingRSVPs));
+        localStorage.setItem('rsvps', JSON.stringify([...(JSON.parse(localStorage.getItem('rsvps') || '[]')), formData]));
         
-        // Mostrar mensaje de éxito
+        if (FORMSPREE_ID && FORMSPREE_ID !== 'TU_FORM_ID') {
+            try {
+                await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+            } catch (err) {}
+        }
+        
         const formWrapper = document.getElementById('rsvpFormWrapper');
         if (formWrapper) formWrapper.style.display = 'none';
         rsvpSuccess.style.display = 'block';
-        
-        // Scroll suave al mensaje
-        setTimeout(() => {
-            rsvpSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 100);
-        
-        // Opcional: Enviar a servidor
-        // fetch('/api/rsvp', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(formData)
-        // });
+        setTimeout(() => rsvpSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
     });
 }
 
