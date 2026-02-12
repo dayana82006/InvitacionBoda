@@ -29,6 +29,15 @@ window.addEventListener('load', () => {
     loader.addEventListener('touchstart', closeLoaderAndPlay, { once: true, passive: true });
     
     setTimeout(closeLoaderAndPlay, 3000);
+
+    // Si el autoplay fue bloqueado, intentar reproducir en el primer toque/clic en cualquier parte
+    function tryPlayOnFirstInteraction() {
+        tryPlayMusic();
+        document.removeEventListener('click', tryPlayOnFirstInteraction);
+        document.removeEventListener('touchstart', tryPlayOnFirstInteraction);
+    }
+    document.addEventListener('click', tryPlayOnFirstInteraction, { once: true });
+    document.addEventListener('touchstart', tryPlayOnFirstInteraction, { once: true, passive: true });
 });
 
 // ============================================
