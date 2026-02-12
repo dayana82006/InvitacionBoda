@@ -1195,66 +1195,77 @@ body {
     box-shadow: 0 0 0 3px rgba(103, 136, 82, 0.1);
 }
 
-/* Radio buttons horizontales - padding para alinear con el resto del formulario */
+/* Radio buttons - diseño tipo tarjetas elegantes */
 .form-group-radio {
     margin-bottom: 30px;
-    padding-left: 16px;
 }
 
 .radio-group {
     display: flex;
     flex-direction: row;
-    gap: 25px;
+    gap: 16px;
     flex-wrap: wrap;
 }
 
 .radio-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    flex: 1;
+    min-width: 140px;
     cursor: pointer;
-    transition: all var(--transition-base);
-}
-
-.radio-option:hover .radio-text {
-    color: var(--green-dark);
 }
 
 .radio-option input[type="radio"] {
     display: none;
 }
 
-.radio-custom {
-    width: 22px;
-    height: 22px;
-    border: 2px solid #c4c9cf;
-    border-radius: 50%;
-    position: relative;
-    flex-shrink: 0;
-    transition: all var(--transition-base);
-}
-
-.radio-option input[type="radio"]:checked + .radio-custom {
-    border-color: var(--green-medium);
-    background: var(--green-medium);
-}
-
-.radio-option input[type="radio"]:checked + .radio-custom::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    background: var(--white);
-    border-radius: 50%;
-}
-
-.radio-text {
-    font-family: var(--font-serif);
-    font-size: 1rem;
+.radio-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 24px;
+    border: 2px solid #e2e6ea;
+    border-radius: 14px;
+    background: #fafbfc;
+    font-family: var(--font-montserrat);
+    font-size: 0.95rem;
+    font-weight: 500;
     color: var(--text-medium);
+    transition: all 0.3s ease;
+}
+
+.radio-box i {
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+.radio-option:hover .radio-box {
+    border-color: var(--green-medium);
+    background: rgba(103, 136, 82, 0.06);
+    color: var(--green-dark);
+}
+
+.radio-option input[type="radio"]:checked + .radio-box {
+    border-color: var(--green-medium);
+    background: rgba(103, 136, 82, 0.12);
+    color: var(--green-dark);
+}
+
+.radio-option input[type="radio"]:checked + .radio-box i {
+    opacity: 1;
+}
+
+.radio-option-yes input[type="radio"]:checked + .radio-box i {
+    color: var(--green-medium);
+}
+
+.radio-option-no input[type="radio"]:checked + .radio-box {
+    border-color: #c4a77d;
+    background: rgba(196, 167, 125, 0.1);
+    color: var(--text-dark);
+}
+
+.radio-option-no input[type="radio"]:checked + .radio-box i {
+    color: #c4a77d;
 }
 
 /* Botón enviar - verde khaki/oliva */
@@ -1545,6 +1556,15 @@ body {
 .qr-recuerdos-image {
     max-width: 320px;
     margin: 0 auto;
+}
+
+.qr-recuerdos-image a {
+    display: block;
+    cursor: pointer;
+}
+
+.qr-recuerdos-image a:hover img {
+    opacity: 0.9;
 }
 
 .qr-recuerdos-image img {
@@ -2043,11 +2063,12 @@ body {
     }
     
     .radio-group {
-        gap: 20px;
+        gap: 12px;
     }
     
-    .radio-text {
-        font-size: 0.95rem;
+    .radio-box {
+        padding: 14px 20px;
+        font-size: 0.9rem;
     }
     
     .btn-submit {
@@ -2483,10 +2504,15 @@ body {
     
     .radio-group {
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
     }
     
-    .radio-text {
+    .radio-option {
+        min-width: 100%;
+    }
+    
+    .radio-box {
+        padding: 14px 18px;
         font-size: 0.9rem;
     }
     

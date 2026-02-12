@@ -217,15 +217,19 @@
             <form class="rsvp-form" id="rsvpForm">
                 <div class="form-group form-group-radio">
                     <div class="radio-group">
-                        <label class="radio-option">
+                        <label class="radio-option radio-option-yes">
                             <input type="radio" name="attendance" value="yes" required>
-                            <span class="radio-custom"></span>
-                            <span class="radio-text">Sí, allí estaré!</span>
+                            <span class="radio-box">
+                                <i class="far fa-check-circle"></i>
+                                <span>Sí, allí estaré!</span>
+                            </span>
                         </label>
-                        <label class="radio-option">
+                        <label class="radio-option radio-option-no">
                             <input type="radio" name="attendance" value="no" required>
-                            <span class="radio-custom"></span>
-                            <span class="radio-text">No podré asistir</span>
+                            <span class="radio-box">
+                                <i class="far fa-times-circle"></i>
+                                <span>No podré asistir</span>
+                            </span>
                         </label>
                     </div>
                 </div>
@@ -238,11 +242,6 @@
                 <div class="form-group">
                     <label for="allergies">Intolerancias o alergias alimentarias</label>
                     <input type="text" id="allergies" name="allergies" placeholder="Indica si tienes alguna">
-                </div>
-                
-                <div class="form-group">
-                    <label for="song">¿Qué canción no puede faltar?</label>
-                    <input type="text" id="song" name="song" placeholder="Tu canción favorita para la fiesta">
                 </div>
                 
                 <div class="form-group">
@@ -293,7 +292,9 @@
             <h2 class="qr-recuerdos-title">Comparte Tus Recuerdos</h2>
             <p class="qr-recuerdos-text">Escanea el código QR para subir y ver las fotos del álbum compartido</p>
             <div class="qr-recuerdos-image">
-                <img src="Media/Comparte Tus Recuerdos  (1).png" alt="Código QR - Comparte Tus Recuerdos">
+                <a href="https://photos.app.goo.gl/42heVNCVUGCdrS348" target="_blank" rel="noopener noreferrer" title="Abrir álbum de fotos">
+                    <img src="Media/Comparte Tus Recuerdos  (1).png" alt="Código QR - Comparte Tus Recuerdos">
+                </a>
             </div>
         </div>
     </section>

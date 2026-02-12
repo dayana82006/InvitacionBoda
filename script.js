@@ -238,11 +238,9 @@ document.getElementById('qrIcon')?.addEventListener('click', () => {
 
 // ============================================
 // FORMULARIO RSVP
-// Guardado: 1) Formspree (envía por email) 2) localStorage (respaldo)
-// Para recibir las confirmaciones por email: crea un form en https://formspree.io
-// y reemplaza 'TU_FORM_ID' por tu ID (ej: xyzabcde)
+// Guardado: Google Sheets (ilimitado) + localStorage (respaldo)
 // ============================================
-const FORMSPREE_ID = 'xdalarnp';
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbymymb4dTawe3djNr9dMxjmjlw9qGsY3NYV1FldrbrYg60X7_1KqI5qG1pJMkkIEpC_fw/exec';
 const rsvpForm = document.getElementById('rsvpForm');
 const rsvpSuccess = document.getElementById('rsvpSuccess');
 
@@ -254,16 +252,15 @@ if (rsvpForm) {
             name: document.getElementById('name').value,
             attendance: document.querySelector('input[name="attendance"]:checked')?.value,
             allergies: document.getElementById('allergies')?.value || '',
-            song: document.getElementById('song')?.value || '',
             message: document.getElementById('rsvpMessage').value,
             timestamp: new Date().toISOString()
         };
         
         localStorage.setItem('rsvps', JSON.stringify([...(JSON.parse(localStorage.getItem('rsvps') || '[]')), formData]));
         
-        if (FORMSPREE_ID && FORMSPREE_ID !== 'TU_FORM_ID') {
+        if (GOOGLE_SHEETS_URL) {
             try {
-                await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                await fetch(GOOGLE_SHEETS_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
