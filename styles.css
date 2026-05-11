@@ -357,7 +357,7 @@ body {
 }
 
 .rsvp-divider-heart {
-    margin: 4px auto 30px;
+    margin: 8px auto 28px;
 }
 
 .gallery-divider-garland {
@@ -522,8 +522,7 @@ body {
     .countdown-card,
     .event-card,
     .dress-code-card,
-    .message-card,
-    .rsvp-form {
+    .message-card {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 }
@@ -1365,100 +1364,126 @@ body {
    RSVP SECTION - Diseño limpio y elegante
    ============================================ */
 .rsvp-section {
-    padding: 80px 24px 100px 28px;
+    padding: 80px 16px 100px;
     background: #eef1f5;
     position: relative;
 }
 
 .rsvp-form-container {
+    width: 100%;
     max-width: 560px;
     margin: 0 auto;
     background: var(--white);
     border-radius: 20px;
-    padding: 50px 40px 50px 45px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    padding: 44px 28px 48px;
+    box-sizing: border-box;
+}
+
+#rsvpFormWrapper,
+.rsvp-form {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .rsvp-title {
     font-family: var(--font-serif);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-dark);
     text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 12px;
+    letter-spacing: 0.12em;
+    margin-bottom: 18px;
     text-align: center;
+    padding-inline: 4px;
 }
 
 .rsvp-subtitle {
     font-family: var(--font-serif);
-    font-size: 1rem;
+    font-size: 1.08rem;
     color: var(--text-medium);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     font-weight: 400;
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.7;
+    max-width: 28em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .rsvp-form {
-    margin-bottom: 40px;
+    margin-bottom: 44px;
 }
 
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 32px;
 }
 
 .form-group label {
     display: block;
     font-family: var(--font-serif);
-    font-size: 0.95rem;
+    font-size: 1.06rem;
     color: var(--text-dark);
-    margin-bottom: 8px;
-    font-weight: 500;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+    word-break: break-word;
+    hyphens: auto;
+    padding-inline: 2px;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="number"],
-.form-group textarea {
+.rsvp-form .form-group input[type="text"],
+.rsvp-form .form-group input[type="email"],
+.rsvp-form .form-group input[type="number"],
+.rsvp-form .form-group textarea {
     width: 100%;
-    padding: 14px 20px 14px 22px;
-    border: 1px solid #d8dce0;
-    border-radius: 10px;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 16px 18px;
+    border: none;
+    border-radius: 12px;
     font-family: var(--font-serif);
-    font-size: 1rem;
+    font-size: 1.08rem;
     color: var(--text-dark);
-    background: var(--white);
-    transition: all var(--transition-base);
+    background: #f1f2f4;
+    transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.rsvp-form .form-group textarea {
+    min-height: 130px;
+    line-height: 1.55;
+    resize: vertical;
+}
+
+.rsvp-form .form-group input::placeholder,
+.rsvp-form .form-group textarea::placeholder {
     color: #9ca3af;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.rsvp-form .form-group input:focus,
+.rsvp-form .form-group textarea:focus {
     outline: none;
-    border-color: var(--green-medium);
-    box-shadow: 0 0 0 3px rgba(103, 136, 82, 0.1);
+    border: none;
+    background: #eceef1;
+    box-shadow: 0 0 0 2px rgba(103, 136, 82, 0.28);
 }
 
 /* Radio buttons - diseño tipo tarjetas elegantes */
 .form-group-radio {
-    margin-bottom: 30px;
+    margin-bottom: 36px;
 }
 
 .radio-group {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 16px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .radio-option {
-    flex: 1;
-    min-width: 140px;
+    flex: none;
+    width: 100%;
+    min-width: 0;
     cursor: pointer;
 }
 
@@ -1466,73 +1491,77 @@ body {
     display: none;
 }
 
-.radio-box {
+.rsvp-form .radio-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 16px 24px;
-    border: 2px solid #e2e6ea;
+    gap: 12px;
+    padding: 18px 22px;
+    min-height: 54px;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: none;
     border-radius: 14px;
-    background: #fafbfc;
+    background: #f1f2f4;
     font-family: var(--font-montserrat);
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 500;
     color: var(--text-medium);
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
 
-.radio-box i {
-    font-size: 1.2rem;
+.rsvp-form .radio-box i {
+    font-size: 1.35rem;
     opacity: 0.7;
 }
 
-.radio-option:hover .radio-box {
-    border-color: var(--green-medium);
-    background: rgba(103, 136, 82, 0.06);
+.rsvp-form .radio-option:hover .radio-box {
+    background: rgba(103, 136, 82, 0.1);
     color: var(--green-dark);
+    box-shadow: 0 0 0 2px rgba(103, 136, 82, 0.2);
 }
 
-.radio-option input[type="radio"]:checked + .radio-box {
-    border-color: var(--green-medium);
-    background: rgba(103, 136, 82, 0.12);
+.rsvp-form .radio-option input[type="radio"]:checked + .radio-box {
+    background: rgba(103, 136, 82, 0.14);
     color: var(--green-dark);
+    box-shadow: 0 0 0 2px rgba(103, 136, 82, 0.35);
 }
 
-.radio-option input[type="radio"]:checked + .radio-box i {
+.rsvp-form .radio-option input[type="radio"]:checked + .radio-box i {
     opacity: 1;
 }
 
-.radio-option-yes input[type="radio"]:checked + .radio-box i {
+.rsvp-form .radio-option-yes input[type="radio"]:checked + .radio-box i {
     color: var(--green-medium);
 }
 
-.radio-option-no input[type="radio"]:checked + .radio-box {
-    border-color: #c4a77d;
-    background: rgba(196, 167, 125, 0.1);
+.rsvp-form .radio-option-no input[type="radio"]:checked + .radio-box {
+    background: rgba(196, 167, 125, 0.12);
     color: var(--text-dark);
+    box-shadow: 0 0 0 2px rgba(196, 167, 125, 0.35);
 }
 
-.radio-option-no input[type="radio"]:checked + .radio-box i {
+.rsvp-form .radio-option-no input[type="radio"]:checked + .radio-box i {
     color: #c4a77d;
 }
 
 /* Botón enviar - verde khaki/oliva */
 .btn-submit {
     width: 100%;
-    padding: 16px 40px;
+    padding: 18px 40px;
     background: #6b7c5d;
     color: var(--white);
     border: none;
     border-radius: 12px;
     font-family: var(--font-serif);
-    font-size: 1rem;
+    font-size: 1.06rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0.12em;
     cursor: pointer;
     transition: all var(--transition-base);
-    margin-top: 10px;
+    margin-top: 22px;
+    min-height: 54px;
 }
 
 .btn-submit:hover {
@@ -1543,7 +1572,8 @@ body {
 /* Footer decorativo con script */
 .rsvp-footer {
     text-align: center;
-    padding-top: 25px;
+    padding-top: 32px;
+    margin-top: 8px;
     border-top: 1px solid #eee;
 }
 
@@ -2257,7 +2287,7 @@ body {
     }
     
     .message-card {
-        padding: 35px 25px;
+        padding: 40px 28px;
         border-radius: 20px;
     }
     
@@ -2268,8 +2298,8 @@ body {
     }
     
     .message-text {
-        font-size: 1.15rem;
-        line-height: 1.8;
+        font-size: 1.22rem;
+        line-height: 1.82;
     }
     
     .message-signature {
@@ -2279,49 +2309,61 @@ body {
     
     /* RSVP */
     .rsvp-section {
-        padding: 60px 20px 80px 24px;
+        padding: 64px 16px 88px;
     }
     
     .rsvp-form-container {
-        padding: 35px 28px 35px 32px;
+        padding: 38px 22px 40px;
     }
     
     .rsvp-title {
-        font-size: 1.2rem;
+        font-size: 1.35rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 16px;
     }
     
     .rsvp-subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 30px;
+        font-size: 1.05rem;
+        margin-bottom: 12px;
+        line-height: 1.72;
     }
     
     .form-group {
-        margin-bottom: 22px;
+        margin-bottom: 26px;
     }
     
     .form-group label {
-        font-size: 0.9rem;
+        font-size: 1.04rem;
+        margin-bottom: 11px;
     }
     
-    .form-group input,
-    .form-group textarea {
-        padding: 13px 18px 13px 20px;
-        font-size: 0.95rem;
+    .rsvp-form .form-group input[type="text"],
+    .rsvp-form .form-group input[type="email"],
+    .rsvp-form .form-group input[type="number"],
+    .rsvp-form .form-group textarea {
+        padding: 15px 16px;
+        font-size: 1.06rem;
+    }
+
+    .rsvp-form .form-group textarea {
+        min-height: 120px;
     }
     
     .radio-group {
-        gap: 12px;
+        gap: 15px;
     }
     
-    .radio-box {
-        padding: 14px 20px;
-        font-size: 0.9rem;
+    .rsvp-form .radio-box {
+        padding: 17px 18px;
+        font-size: 1.03rem;
+        min-height: 52px;
     }
     
     .btn-submit {
-        padding: 15px 30px;
-        font-size: 0.95rem;
-        min-height: 52px;
+        padding: 17px 30px;
+        font-size: 1.02rem;
+        min-height: 54px;
+        margin-top: 20px;
     }
     
     .rsvp-success {
@@ -2691,7 +2733,7 @@ body {
     }
     
     .message-card {
-        padding: 30px 20px;
+        padding: 34px 22px;
         border-radius: 15px;
     }
     
@@ -2702,8 +2744,8 @@ body {
     }
     
     .message-text {
-        font-size: 1rem;
-        line-height: 1.7;
+        font-size: 1.08rem;
+        line-height: 1.78;
     }
     
     .message-signature {
@@ -2713,61 +2755,62 @@ body {
     
     /* RSVP */
     .rsvp-section {
-        padding: 50px 18px 70px 22px;
+        padding: 56px 14px 76px;
     }
     
     .rsvp-form-container {
-        padding: 30px 24px 30px 28px;
+        padding: 34px 18px 36px;
     }
     
     .rsvp-title {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 14px;
     }
     
     .rsvp-subtitle {
-        font-size: 0.9rem;
-        margin-bottom: 25px;
+        font-size: 1.02rem;
+        margin-bottom: 10px;
+        line-height: 1.72;
     }
     
     .form-group {
-        margin-bottom: 18px;
+        margin-bottom: 26px;
     }
     
     .form-group label {
-        font-size: 0.85rem;
+        font-size: 1.02rem;
+        margin-bottom: 11px;
     }
     
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="number"],
-    .form-group textarea {
-        padding: 12px 18px 12px 20px;
-        font-size: 0.9rem;
-        min-height: 46px;
+    .rsvp-form .form-group input[type="text"],
+    .rsvp-form .form-group input[type="email"],
+    .rsvp-form .form-group input[type="number"],
+    .rsvp-form .form-group textarea {
+        padding: 14px 15px;
+        font-size: 1.04rem;
+        min-height: 50px;
     }
     
-    .form-group textarea {
-        min-height: 90px;
+    .rsvp-form .form-group textarea {
+        min-height: 118px;
     }
     
     .radio-group {
-        flex-direction: column;
-        gap: 10px;
+        gap: 16px;
     }
     
-    .radio-option {
-        min-width: 100%;
-    }
-    
-    .radio-box {
-        padding: 14px 18px;
-        font-size: 0.9rem;
+    .rsvp-form .radio-box {
+        padding: 16px 16px;
+        font-size: 1.02rem;
+        min-height: 52px;
     }
     
     .btn-submit {
-        padding: 14px 24px;
-        font-size: 0.9rem;
-        min-height: 50px;
+        padding: 16px 22px;
+        font-size: 1.02rem;
+        min-height: 52px;
+        margin-top: 18px;
     }
     
     .rsvp-success {
