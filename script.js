@@ -4,6 +4,15 @@
 const weddingMusic = document.getElementById('weddingMusic');
 let musicStarted = false;
 
+/** Tras recargar, el navegador restaura el scroll y dispara `scroll` sin gesto del usuario: no debe iniciar música. */
+let musicScrollBaselineY = 0;
+let musicScrollGateReady = false;
+
+function refreshMusicScrollBaseline() {
+    musicScrollBaselineY = window.pageYOffset;
+    musicScrollGateReady = true;
+}
+
 function tryPlayMusic() {
     if (!weddingMusic || musicStarted) return;
     weddingMusic.play().then(() => {
@@ -12,15 +21,45 @@ function tryPlayMusic() {
     }).catch(() => {});
 }
 
-// Loader: solo pantalla de bienvenida (la música arranca con el primer scroll; ver listener más abajo)
+function tryPlayMusicFromUserScroll() {
+    if (!musicScrollGateReady) return;
+    const delta = Math.abs(window.pageYOffset - musicScrollBaselineY);
+    if (delta < 16) return;
+    tryPlayMusic();
+}
+
+if (weddingMusic) {
+    weddingMusic.pause();
+}
+
+window.addEventListener('pageshow', (ev) => {
+    if (!ev.persisted || !weddingMusic) return;
+    weddingMusic.pause();
+    musicStarted = false;
+    document.getElementById('musicIcon')?.classList.remove('music-playing');
+});
+
+// Loader: al cerrarse fijamos la posición de scroll de referencia (evita música solo por restauración al F5)
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
+    if (!loader) {
+        setTimeout(refreshMusicScrollBaseline, 300);
+        return;
+    }
+
     let closed = false;
+
+    function armMusicScrollGate() {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(refreshMusicScrollBaseline);
+        });
+    }
 
     function closeLoader() {
         if (closed) return;
         closed = true;
         loader.classList.add('hidden');
+        armMusicScrollGate();
         setTimeout(() => { loader.style.display = 'none'; }, 600);
     }
 
@@ -153,7 +192,7 @@ function updateParallax() {
 }
 
 window.addEventListener('scroll', () => {
-    tryPlayMusic();
+    tryPlayMusicFromUserScroll();
     if (!ticking) {
         window.requestAnimationFrame(updateParallax);
         ticking = true;
