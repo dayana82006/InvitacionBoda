@@ -14,6 +14,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden;clip:rect(0,0,0,0)" aria-hidden="true" focusable="false">
+        <symbol id="svg-garland-floral" viewBox="0 0 400 52">
+            <g fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" opacity="0.62">
+                <path d="M200 47 C168 42 135 34 105 24 C82 17 55 12 32 9"/>
+                <path d="M200 47 C232 42 265 34 295 24 C318 17 345 12 368 9"/>
+            </g>
+            <g fill="currentColor">
+                <ellipse cx="200" cy="43" rx="5" ry="2.5" opacity="0.32"/>
+                <ellipse cx="168" cy="38" rx="9" ry="4.5" transform="rotate(-22 168 38)" opacity="0.38"/>
+                <ellipse cx="138" cy="30" rx="8" ry="4" transform="rotate(-38 138 30)" opacity="0.36"/>
+                <ellipse cx="108" cy="22" rx="7" ry="3.5" transform="rotate(-48 108 22)" opacity="0.34"/>
+                <ellipse cx="75" cy="16" rx="6" ry="3" transform="rotate(-58 75 16)" opacity="0.32"/>
+                <ellipse cx="232" cy="38" rx="9" ry="4.5" transform="rotate(22 232 38)" opacity="0.38"/>
+                <ellipse cx="262" cy="30" rx="8" ry="4" transform="rotate(38 262 30)" opacity="0.36"/>
+                <ellipse cx="292" cy="22" rx="7" ry="3.5" transform="rotate(48 292 22)" opacity="0.34"/>
+                <ellipse cx="325" cy="16" rx="6" ry="3" transform="rotate(58 325 16)" opacity="0.32"/>
+            </g>
+        </symbol>
+    </svg>
     <!-- Audio de fondo -->
     <audio id="weddingMusic" loop preload="auto">
         <source src="Media/Christina Perri - A Thousand Years [Official Music Video].mp3" type="audio/mpeg">
@@ -57,9 +76,17 @@
             </h1>
             
             <div class="hero-date">
-                <div class="date-divider"></div>
+                <div class="divisor-heart divisor-heart--hero" role="presentation" aria-hidden="true">
+                    <span class="divisor-heart__line"></span>
+                    <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                    <span class="divisor-heart__line"></span>
+                </div>
                 <p class="date-text">12 de Septiembre, 2026</p>
-                <div class="date-divider"></div>
+                <div class="divisor-heart divisor-heart--hero" role="presentation" aria-hidden="true">
+                    <span class="divisor-heart__line"></span>
+                    <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                    <span class="divisor-heart__line"></span>
+                </div>
             </div>
             
             <div class="scroll-indicator">
@@ -88,7 +115,15 @@
     <section class="invitation-section" id="invitation">
         <div class="invitation-card">
             <h2 class="invitation-title">¡Estás invitado!</h2>
+            <div class="divisor-garland divisor-garland--gold invitation-divider-garland" role="presentation" aria-hidden="true">
+                <svg class="divisor-garland__svg" viewBox="0 0 400 52" preserveAspectRatio="xMidYMid meet"><use href="#svg-garland-floral"/></svg>
+            </div>
             <p class="invitation-subtitle">Nos encantaría que seas parte de este momento tan especial para nosotros. ¡Falta poco!</p>
+            <div class="divisor-heart invitation-divider-heart" role="presentation" aria-hidden="true">
+                <span class="divisor-heart__line"></span>
+                <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                <span class="divisor-heart__line"></span>
+            </div>
             
             <!-- Countdown en círculos -->
             <div class="countdown-circles" id="countdownDisplay">
@@ -128,6 +163,11 @@
                 <p class="ceremony-location">Urapanes del Bosque<br>Cajamarca - Tolima</p>
                 <p class="ceremony-prompt">Te esperamos el</p>
                 <p class="ceremony-datetime">12 de septiembre · 4:00 p.m.</p>
+                <div class="divisor-heart divisor-heart--compact ceremony-divider-heart" role="presentation" aria-hidden="true">
+                    <span class="divisor-heart__line"></span>
+                    <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                    <span class="divisor-heart__line"></span>
+                </div>
                 <a href="https://maps.google.com/?q=Urapanes+del+bosque+Cajamarca+Tolima" 
                    target="_blank" 
                    class="btn-map btn-ceremony">
@@ -143,7 +183,11 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Detalles del Evento</h2>
-                <div class="title-decoration"></div>
+                <div class="divisor-heart section-divider-heart" role="presentation" aria-hidden="true">
+                    <span class="divisor-heart__line"></span>
+                    <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                    <span class="divisor-heart__line"></span>
+                </div>
             </div>
             
             <div class="event-cards">
@@ -189,7 +233,11 @@
                 </div>
                 <h2 class="dress-code-title">Código de Vestimenta</h2>
                 <p class="dress-code-text">Formal</p>
-                <div class="dress-code-decoration"></div>
+                <div class="divisor-heart divisor-heart--compact dress-code-divider" role="presentation" aria-hidden="true">
+                    <span class="divisor-heart__line"></span>
+                    <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                    <span class="divisor-heart__line"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -204,6 +252,14 @@
                     Eligieron amarse, cuidarse y caminar juntos, convirtiendo su unión
                     en una promesa de amor que vive en el corazón.
                 </p>
+                <div class="divisor-heart message-divider-heart" role="presentation" aria-hidden="true">
+                    <span class="divisor-heart__line"></span>
+                    <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                    <span class="divisor-heart__line"></span>
+                </div>
+                <div class="divisor-garland message-divider-garland" role="presentation" aria-hidden="true">
+                    <svg class="divisor-garland__svg" viewBox="0 0 400 52" preserveAspectRatio="xMidYMid meet"><use href="#svg-garland-floral"/></svg>
+                </div>
                 <div class="message-signature">Con amor</div>
             </div>
         </div>
@@ -215,6 +271,11 @@
             <div id="rsvpFormWrapper">
             <h2 class="rsvp-title">Confirmar Asistencia</h2>
             <p class="rsvp-subtitle">Por favor, confirma tu asistencia ¡Esperamos que estés allí!</p>
+            <div class="divisor-heart rsvp-divider-heart" role="presentation" aria-hidden="true">
+                <span class="divisor-heart__line"></span>
+                <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                <span class="divisor-heart__line"></span>
+            </div>
             
             <form class="rsvp-form" id="rsvpForm">
                 <div class="form-group form-group-radio">
@@ -276,6 +337,14 @@
     <section class="gallery-section" id="gallery">
         <div class="gallery-header">
             <h2 class="gallery-title">Nuestra Galería</h2>
+            <div class="divisor-garland divisor-garland--light gallery-divider-garland" role="presentation" aria-hidden="true">
+                <svg class="divisor-garland__svg" viewBox="0 0 400 52" preserveAspectRatio="xMidYMid meet"><use href="#svg-garland-floral"/></svg>
+            </div>
+            <div class="divisor-heart divisor-heart--sage gallery-divider-heart" role="presentation" aria-hidden="true">
+                <span class="divisor-heart__line"></span>
+                <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                <span class="divisor-heart__line"></span>
+            </div>
             <p class="gallery-hint">Toca cualquier foto para verla en grande</p>
             <button type="button" class="btn-gallery" id="btnVerFotos" aria-label="Ver fotos">
                 <i class="far fa-images"></i>
@@ -292,6 +361,11 @@
     <section class="qr-recuerdos-section" id="recuerdos">
         <div class="qr-recuerdos-card fade-in">
             <h2 class="qr-recuerdos-title">Comparte Tus Recuerdos</h2>
+            <div class="divisor-heart divisor-heart--compact qr-divider-heart" role="presentation" aria-hidden="true">
+                <span class="divisor-heart__line"></span>
+                <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                <span class="divisor-heart__line"></span>
+            </div>
             <p class="qr-recuerdos-text">Escanea el código QR para subir y ver las fotos del álbum compartido</p>
             <div class="qr-recuerdos-image">
                 <a href="https://photos.app.goo.gl/42heVNCVUGCdrS348" target="_blank" rel="noopener noreferrer" title="Abrir álbum de fotos">
@@ -305,10 +379,18 @@
     <section class="envelope-section" id="envelopes">
         <div class="envelope-card fade-in">
             <div class="envelope-card-inner">
-                <div class="envelope-decorative-line"></div>
+                <div class="divisor-heart divisor-heart--compact" role="presentation" aria-hidden="true">
+                    <span class="divisor-heart__line"></span>
+                    <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                    <span class="divisor-heart__line"></span>
+                </div>
                 <h2 class="envelope-title">Lluvia de Sobres</h2>
                 <p class="envelope-text">Tu presencia es el mejor regalo que podríamos recibir. Si deseas obsequiarnos algo más, será recibido con mucho cariño y gratitud.</p>
-                <div class="envelope-decorative-line"></div>
+                <div class="divisor-heart divisor-heart--compact" role="presentation" aria-hidden="true">
+                    <span class="divisor-heart__line"></span>
+                    <span class="divisor-heart__icon"><i class="far fa-heart" aria-hidden="true"></i></span>
+                    <span class="divisor-heart__line"></span>
+                </div>
             </div>
         </div>
     </section>

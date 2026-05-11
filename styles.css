@@ -236,29 +236,130 @@ body {
     display: inline-block;
 }
 
-.title-decoration {
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    margin: 20px auto;
-    position: relative;
+/* Divisores: líneas finas + corazón y guirnalda floral (identidad visual) */
+.divisor-heart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 380px);
+    margin: 18px auto;
 }
 
-.title-decoration::before,
-.title-decoration::after {
-    content: '❦';
-    position: absolute;
-    top: -10px;
+.divisor-heart__line {
+    flex: 1;
+    min-width: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(184, 148, 31, 0.35) 15%,
+        var(--gold) 50%,
+        rgba(184, 148, 31, 0.35) 85%,
+        transparent 100%
+    );
+}
+
+.divisor-heart__icon {
+    flex-shrink: 0;
+    padding: 0 14px;
     color: var(--gold);
-    font-size: 16px;
+    font-size: 0.72rem;
+    line-height: 1;
+    opacity: 0.95;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
 }
 
-.title-decoration::before {
-    left: -30px;
+.divisor-heart--compact {
+    width: min(100%, 280px);
+    margin: 12px auto;
 }
 
-.title-decoration::after {
-    right: -30px;
+.divisor-heart--hero {
+    width: min(88vw, 340px);
+    margin: 12px auto;
+}
+
+.divisor-heart--hero .divisor-heart__line {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+}
+
+.divisor-heart--hero .divisor-heart__icon {
+    color: var(--gold-light);
+    font-size: 0.82rem;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+}
+
+.divisor-heart--sage .divisor-heart__line {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+}
+
+.divisor-heart--sage .divisor-heart__icon {
+    color: var(--gold-light);
+}
+
+.divisor-garland {
+    width: min(100%, 440px);
+    margin: 22px auto;
+    color: var(--green-medium);
+}
+
+.divisor-garland--gold {
+    color: var(--gold-dark);
+    opacity: 0.92;
+}
+
+.divisor-garland--light {
+    color: rgba(255, 255, 255, 0.92);
+    opacity: 0.95;
+}
+
+.divisor-garland svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 52px;
+}
+
+.section-divider-heart {
+    margin-top: 6px;
+}
+
+.ceremony-divider-heart {
+    margin: 10px auto 22px;
+}
+
+.rsvp-divider-heart {
+    margin: 4px auto 30px;
+}
+
+.gallery-divider-garland {
+    margin: 10px auto 4px;
+}
+
+.gallery-divider-heart {
+    margin: 2px auto 14px;
+}
+
+.qr-divider-heart {
+    margin: 14px auto 18px;
+}
+
+.dress-code-divider {
+    margin-top: 26px;
 }
 
 /* ============================================
@@ -576,13 +677,6 @@ body {
     animation: fadeInUp 1s ease-out 0.9s both;
 }
 
-.date-divider {
-    width: 150px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
-    margin: 15px auto;
-}
-
 .date-text {
     font-family: var(--font-serif);
     font-size: 1.6rem;
@@ -653,8 +747,16 @@ body {
     font-size: 1.1rem;
     color: var(--text-medium);
     line-height: 1.8;
-    margin-bottom: 45px;
+    margin-bottom: 22px;
     font-weight: 400;
+}
+
+.invitation-divider-garland {
+    margin: 8px auto 18px;
+}
+
+.invitation-divider-heart {
+    margin: 0 auto 36px;
 }
 
 /* Countdown en círculos */
@@ -1067,13 +1169,6 @@ body {
     letter-spacing: 2px;
 }
 
-.dress-code-decoration {
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    margin: 30px auto 0;
-}
-
 /* ============================================
    MESSAGE SECTION
    ============================================ */
@@ -1116,11 +1211,19 @@ body {
     z-index: 1;
 }
 
+.message-divider-heart {
+    margin: 28px auto 10px;
+}
+
+.message-divider-garland {
+    margin: 0 auto 20px;
+}
+
 .message-signature {
     font-family: var(--font-script);
     font-size: 1.5rem;
     color: var(--green-dark);
-    margin-top: 30px;
+    margin-top: 0;
     text-align: right;
     font-weight: 600;
 }
@@ -1158,7 +1261,7 @@ body {
     font-family: var(--font-serif);
     font-size: 1rem;
     color: var(--text-medium);
-    margin-bottom: 35px;
+    margin-bottom: 14px;
     font-weight: 400;
     text-align: center;
     line-height: 1.6;
@@ -1623,15 +1726,13 @@ body {
     text-align: center;
 }
 
-.envelope-decorative-line {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 0 auto 30px;
+.envelope-card-inner .divisor-heart:first-of-type {
+    margin-bottom: 24px;
 }
 
-.envelope-decorative-line:last-of-type {
-    margin: 30px auto 0;
+.envelope-card-inner .divisor-heart:last-of-type {
+    margin-top: 28px;
+    margin-bottom: 0;
 }
 
 .envelope-title {
@@ -1826,9 +1927,9 @@ body {
         margin-bottom: 15px;
     }
     
-    .title-decoration {
-        width: 80px;
-        margin: 15px auto;
+    .divisor-heart {
+        width: min(100%, 320px);
+        margin: 14px auto;
     }
     
     /* Hero Section */
@@ -1893,8 +1994,8 @@ body {
         padding: 40px 25px;
     }
     
-    .date-divider {
-        width: 100px;
+    .divisor-heart--hero {
+        width: min(92vw, 280px);
         margin: 10px auto;
     }
     
@@ -2302,8 +2403,8 @@ body {
         letter-spacing: 1px;
     }
     
-    .date-divider {
-        width: 80px;
+    .divisor-heart--hero {
+        width: min(92vw, 240px);
         margin: 8px auto;
     }
     
@@ -2330,8 +2431,8 @@ body {
         margin-bottom: 12px;
     }
     
-    .title-decoration {
-        width: 60px;
+    .divisor-heart {
+        width: min(100%, 280px);
         margin: 12px auto;
     }
     
