@@ -464,19 +464,32 @@ body {
     filter: blur(40px);
 }
 
-/* Monograma */
+/* Monograma (imagen H ♥ J + guirnalda) */
 .monogram-container {
     margin-bottom: 40px;
 }
 
 .monogram {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+    display: block;
+    margin: 0 auto;
     position: relative;
+    max-width: min(92vw, 520px);
 }
 
+.monogram--hero {
+    animation: fadeInUp 1s ease-out 0.25s both;
+}
+
+.monogram-hero-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter:
+        drop-shadow(0 4px 24px rgba(0, 0, 0, 0.35))
+        drop-shadow(0 0 28px rgba(212, 175, 55, 0.25));
+}
+
+/* Texto monograma (respaldo si no hay imagen o en otras secciones) */
 .monogram-letter {
     font-family: var(--font-script);
     font-size: 7rem;
@@ -1846,15 +1859,7 @@ body {
     }
     
     .monogram {
-        gap: 14px;
-    }
-    
-    .monogram-letter {
-        font-size: 4.5rem;
-    }
-    
-    .monogram-heart {
-        font-size: 2.2rem;
+        max-width: min(92vw, 400px);
     }
     
     .hero-date {
@@ -2285,15 +2290,7 @@ body {
     }
     
     .monogram {
-        gap: 10px;
-    }
-    
-    .monogram-letter {
-        font-size: 3.2rem;
-    }
-    
-    .monogram-heart {
-        font-size: 1.8rem;
+        max-width: min(94vw, 300px);
     }
     
     .hero-date {
