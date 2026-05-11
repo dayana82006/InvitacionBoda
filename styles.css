@@ -529,6 +529,60 @@ body {
     pointer-events: none;
 }
 
+/* Ramas acuarela (eucalipto + nube) — PNG recortado desde lámina, esquinas inferiores */
+.hero-botanical {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+    max-width: min(40vw, 240px);
+    width: 38%;
+    line-height: 0;
+}
+
+.hero-botanical--left {
+    left: 0;
+}
+
+.hero-botanical--right {
+    right: 0;
+    text-align: right;
+}
+
+.hero-botanical img {
+    width: 100%;
+    max-height: min(34vh, 300px);
+    height: auto;
+    object-fit: contain;
+    object-position: bottom center;
+    display: inline-block;
+    vertical-align: bottom;
+    opacity: 0.93;
+    filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.35));
+}
+
+@media (max-width: 768px) {
+    .hero-botanical {
+        max-width: min(44vw, 190px);
+        width: 42%;
+    }
+
+    .hero-botanical img {
+        max-height: min(28vh, 220px);
+        opacity: 0.9;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-botanical {
+        max-width: min(50vw, 150px);
+    }
+
+    .hero-botanical img {
+        max-height: min(22vh, 190px);
+    }
+}
+
 .hero-content {
     position: relative;
     z-index: 2;
