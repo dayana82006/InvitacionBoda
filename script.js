@@ -12,32 +12,22 @@ function tryPlayMusic() {
     }).catch(() => {});
 }
 
-// Loader: se cierra al tocar/clic (garantiza que la música empiece al "abrir")
+// Loader: solo pantalla de bienvenida (la música arranca con el primer scroll; ver listener más abajo)
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     let closed = false;
-    
-    function closeLoaderAndPlay() {
+
+    function closeLoader() {
         if (closed) return;
         closed = true;
         loader.classList.add('hidden');
-        tryPlayMusic();
         setTimeout(() => { loader.style.display = 'none'; }, 600);
     }
-    
-    loader.addEventListener('click', closeLoaderAndPlay, { once: true });
-    loader.addEventListener('touchstart', closeLoaderAndPlay, { once: true, passive: true });
-    
-    setTimeout(closeLoaderAndPlay, 3000);
 
-    // Si el autoplay fue bloqueado, intentar reproducir en el primer toque/clic en cualquier parte
-    function tryPlayOnFirstInteraction() {
-        tryPlayMusic();
-        document.removeEventListener('click', tryPlayOnFirstInteraction);
-        document.removeEventListener('touchstart', tryPlayOnFirstInteraction);
-    }
-    document.addEventListener('click', tryPlayOnFirstInteraction, { once: true });
-    document.addEventListener('touchstart', tryPlayOnFirstInteraction, { once: true, passive: true });
+    loader.addEventListener('click', closeLoader, { once: true });
+    loader.addEventListener('touchstart', closeLoader, { once: true, passive: true });
+
+    setTimeout(closeLoader, 3000);
 });
 
 // ============================================
@@ -163,6 +153,7 @@ function updateParallax() {
 }
 
 window.addEventListener('scroll', () => {
+    tryPlayMusic();
     if (!ticking) {
         window.requestAnimationFrame(updateParallax);
         ticking = true;
