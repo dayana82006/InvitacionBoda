@@ -536,72 +536,6 @@ body {
     pointer-events: none;
 }
 
-/* Ramas acuarela (eucalipto + nube) — PNG recortado desde lámina, esquinas inferiores */
-.hero-botanical {
-    position: absolute;
-    bottom: 0;
-    z-index: 1;
-    pointer-events: none;
-    max-width: min(40vw, 240px);
-    width: 38%;
-    line-height: 0;
-}
-
-.hero-botanical--left {
-    left: 0;
-}
-
-.hero-botanical--right {
-    right: 0;
-    text-align: right;
-}
-
-.hero-botanical img {
-    width: 100%;
-    max-height: min(34vh, 300px);
-    height: auto;
-    object-fit: contain;
-    object-position: bottom center;
-    display: inline-block;
-    vertical-align: bottom;
-    opacity: 0.93;
-    filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.35));
-}
-
-@media (max-width: 768px) {
-    .hero-botanical {
-        max-width: min(44vw, 190px);
-        width: 42%;
-    }
-
-    .hero-botanical img {
-        max-height: min(28vh, 220px);
-        opacity: 0.9;
-    }
-
-    .hero-frame {
-        top: calc(10px + env(safe-area-inset-top, 0px));
-        left: calc(10px + env(safe-area-inset-left, 0px));
-        right: calc(10px + env(safe-area-inset-right, 0px));
-        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-    }
-
-    .scroll-text {
-        letter-spacing: 0.22em;
-        font-size: 0.72rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-botanical {
-        max-width: min(50vw, 150px);
-    }
-
-    .hero-botanical img {
-        max-height: min(22vh, 190px);
-    }
-}
-
 .hero-frame {
     position: absolute;
     z-index: 2;
@@ -634,6 +568,20 @@ body {
     color: var(--gold-light);
     font-size: 0.5rem;
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.35));
+}
+
+@media (max-width: 768px) {
+    .hero-frame {
+        top: calc(10px + env(safe-area-inset-top, 0px));
+        left: calc(10px + env(safe-area-inset-left, 0px));
+        right: calc(10px + env(safe-area-inset-right, 0px));
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .scroll-text {
+        letter-spacing: 0.22em;
+        font-size: 0.72rem;
+    }
 }
 
 .hero-content {
@@ -672,32 +620,27 @@ body {
     filter: blur(40px);
 }
 
-/* Monograma (imagen H ♥ J + guirnalda) */
+/* Monograma H ♥ J (texto en hero) */
 .monogram-container {
     margin-bottom: 28px;
 }
 
 .monogram {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(12px, 3vw, 20px);
     margin: 0 auto;
-    position: relative;
+    width: fit-content;
     max-width: min(92vw, 520px);
+    position: relative;
 }
 
 .monogram--hero {
     animation: fadeInUp 1s ease-out 0.25s both;
 }
 
-.monogram-hero-img {
-    display: block;
-    width: 100%;
-    height: auto;
-    filter:
-        drop-shadow(0 4px 24px rgba(0, 0, 0, 0.35))
-        drop-shadow(0 0 28px rgba(212, 175, 55, 0.25));
-}
-
-/* Texto monograma (respaldo si no hay imagen o en otras secciones) */
+/* Letras del monograma */
 .monogram-letter {
     font-family: var(--font-script);
     font-size: 7rem;
