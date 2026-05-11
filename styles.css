@@ -327,6 +327,13 @@ body {
     opacity: 0.95;
 }
 
+.divisor-garland--hero-gold {
+    color: rgba(240, 224, 180, 0.95);
+    width: min(100%, 340px);
+    margin: 12px auto 4px;
+    opacity: 0.94;
+}
+
 .divisor-garland svg {
     display: block;
     width: 100%;
@@ -571,6 +578,18 @@ body {
         max-height: min(28vh, 220px);
         opacity: 0.9;
     }
+
+    .hero-frame {
+        top: calc(10px + env(safe-area-inset-top, 0px));
+        left: calc(10px + env(safe-area-inset-left, 0px));
+        right: calc(10px + env(safe-area-inset-right, 0px));
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .scroll-text {
+        letter-spacing: 0.22em;
+        font-size: 0.72rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -583,9 +602,43 @@ body {
     }
 }
 
+.hero-frame {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    top: calc(14px + env(safe-area-inset-top, 0px));
+    left: calc(14px + env(safe-area-inset-left, 0px));
+    right: calc(14px + env(safe-area-inset-right, 0px));
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    border: 1px solid rgba(212, 175, 55, 0.58);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.hero-frame__top {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-frame__line {
+    width: 26px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232, 212, 166, 0.95), transparent);
+}
+
+.hero-frame__heart {
+    color: var(--gold-light);
+    font-size: 0.5rem;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.35));
+}
+
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     text-align: center;
     width: 100%;
     max-width: 900px;
@@ -621,7 +674,7 @@ body {
 
 /* Monograma (imagen H ♥ J + guirnalda) */
 .monogram-container {
-    margin-bottom: 40px;
+    margin-bottom: 28px;
 }
 
 .monogram {
@@ -680,30 +733,55 @@ body {
     filter: drop-shadow(0 4px 12px var(--gold-glow));
 }
 
-.hero-quote {
-    font-family: var(--font-script);
-    font-size: 3rem;
-    color: var(--white);
-    margin-bottom: 40px;
+.hero-tagline {
+    font-family: var(--font-display);
+    font-size: clamp(0.62rem, 1.8vw, 0.78rem);
     font-weight: 500;
-    text-shadow: 
-        0 2px 10px rgba(0, 0, 0, 0.3),
-        0 0 30px rgba(212, 175, 55, 0.2);
-    animation: fadeInUp 1s ease-out 0.5s both;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin: 0 auto 18px;
+    max-width: 22em;
+    line-height: 1.6;
+    text-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.45),
+        0 0 20px rgba(212, 175, 55, 0.15);
+    animation: fadeInUp 1s ease-out 0.45s both;
+}
+
+.hero-divider {
+    margin: 10px auto;
 }
 
 .hero-names {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2em 0.45em;
     font-family: var(--font-script);
     font-size: 6rem;
     color: var(--white);
     font-weight: 700;
     letter-spacing: 3px;
-    margin-bottom: 30px;
-    text-shadow: 
+    margin: 0 0 10px;
+    text-shadow:
         0 2px 12px rgba(0, 0, 0, 0.4),
         0 0 40px var(--gold-glow);
-    line-height: 1.2;
+    line-height: 1.15;
     animation: fadeInUp 1s ease-out 0.7s both;
+}
+
+.name-ampersand-block {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.name-amp-line {
+    width: 32px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232, 212, 166, 0.85), transparent);
 }
 
 .name-helen,
@@ -721,22 +799,32 @@ body {
 }
 
 .name-ampersand {
-    margin: 0 15px;
+    margin: 0;
     color: var(--gold);
+    font-size: 0.42em;
+    vertical-align: middle;
     text-shadow: 0 0 20px var(--gold-glow);
 }
 
 .hero-date {
-    margin-top: 40px;
+    margin-top: 8px;
     animation: fadeInUp 1s ease-out 0.9s both;
 }
 
 .date-text {
-    font-family: var(--font-serif);
-    font-size: 1.6rem;
-    color: var(--white);
-    letter-spacing: 3px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-display);
+    font-size: clamp(0.75rem, 2.2vw, 0.95rem);
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+}
+
+.date-bullet {
+    color: var(--gold);
+    margin: 0 0.15em;
+    letter-spacing: 0;
 }
 
 .scroll-indicator {
@@ -768,8 +856,10 @@ body {
 .scroll-text {
     font-family: var(--font-serif);
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.9);
-    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.92);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 /* ============================================
@@ -777,7 +867,23 @@ body {
    ============================================ */
 .invitation-section {
     padding: 60px 20px 80px;
-    background: var(--white);
+    background-color: #f4f1ea;
+    background-image:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, transparent 45%),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(0, 0, 0, 0.018) 3px,
+            rgba(0, 0, 0, 0.018) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 3px,
+            rgba(0, 0, 0, 0.014) 3px,
+            rgba(0, 0, 0, 0.014) 4px
+        );
     position: relative;
 }
 
@@ -791,9 +897,20 @@ body {
     font-family: var(--font-script);
     font-size: 3rem;
     font-weight: 600;
-    color: var(--green-dark);
+    color: var(--gold-dark);
     margin-bottom: 20px;
     letter-spacing: 1px;
+    filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.35));
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .invitation-title {
+        background: linear-gradient(165deg, #f5ecd4 0%, #d4af37 45%, #9a7b1c 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
 }
 
 .invitation-subtitle {
@@ -1071,7 +1188,8 @@ body {
    ============================================ */
 .event-details-section {
     padding: 100px 0;
-    background: linear-gradient(180deg, var(--white) 0%, var(--cream) 100%);
+    background:
+        linear-gradient(180deg, #faf7f0 0%, #f0ebe2 55%, #ebe4d8 100%);
     position: relative;
 }
 
@@ -1083,15 +1201,18 @@ body {
 }
 
 .event-card {
-    background: var(--white);
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 6px;
     padding: 40px 30px;
     text-align: center;
-    box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
-    border: 2px solid transparent;
+    border: 2px solid rgba(212, 175, 55, 0.55);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+        0 0 0 1px rgba(184, 148, 31, 0.35),
+        var(--shadow-md);
 }
 
 .event-card::before {
@@ -1108,7 +1229,10 @@ body {
 
 .event-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.65),
+        0 0 0 1px rgba(212, 175, 55, 0.5),
+        var(--shadow-xl);
     border-color: var(--gold);
 }
 
@@ -2000,13 +2124,19 @@ body {
     .hero-names {
         font-size: 3.5rem;
         letter-spacing: 2px;
-        margin-bottom: 20px;
+        margin-bottom: 8px;
         line-height: 1.1;
     }
-    
-    .hero-quote {
-        font-size: 2rem;
-        margin-bottom: 25px;
+
+    .name-amp-line {
+        width: 22px;
+    }
+
+    .hero-tagline {
+        font-size: 0.62rem;
+        letter-spacing: 0.32em;
+        margin-bottom: 14px;
+        padding: 0 8px;
     }
     
     .monogram-container {
@@ -2419,8 +2549,22 @@ body {
     .hero-names {
         font-size: 2.8rem;
         letter-spacing: 1px;
-        line-height: 1.1;
-        margin-bottom: 15px;
+        line-height: 1.15;
+        margin-bottom: 6px;
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .name-ampersand-block {
+        margin: 6px 0;
+    }
+
+    .name-ampersand {
+        font-size: 1.15rem;
+    }
+
+    .name-amp-line {
+        width: 20px;
     }
     
     .name-helen,
@@ -2428,15 +2572,10 @@ body {
         display: block;
     }
     
-    .name-ampersand {
-        margin: 5px 0;
-        display: block;
-        font-size: 1.5rem;
-    }
-    
-    .hero-quote {
-        font-size: 1.6rem;
-        margin-bottom: 20px;
+    .hero-tagline {
+        font-size: 0.55rem;
+        letter-spacing: 0.28em;
+        margin-bottom: 12px;
         padding: 0 10px;
     }
     
