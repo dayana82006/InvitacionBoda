@@ -351,8 +351,9 @@
                     <textarea id="rsvpMessage" name="message" rows="4" placeholder="Déjanos un mensaje especial..."></textarea>
                 </div>
                 
-                <button type="submit" class="btn-submit">
-                    <span>Enviar respuesta</span>
+                <button type="submit" class="btn-submit" id="rsvpSubmitBtn" aria-busy="false">
+                    <span class="btn-submit-text">Enviar respuesta</span>
+                    <span class="btn-submit-loading" hidden><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Enviando…</span>
                 </button>
             </form>
             

@@ -286,7 +286,9 @@ const rsvpSuccess = document.getElementById('rsvpSuccess');
 if (rsvpForm) {
     rsvpForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+        if (rsvpForm.dataset.submitting === 'true') return;
+        rsvpForm.dataset.submitting = 'true';
+
         const formData = {
             name: document.getElementById('name').value,
             attendance: document.querySelector('input[name="attendance"]:checked')?.value,
@@ -294,9 +296,22 @@ if (rsvpForm) {
             message: document.getElementById('rsvpMessage').value,
             timestamp: new Date().toISOString()
         };
-        
+        const submitBtn = document.getElementById('rsvpSubmitBtn');
+        const textEl = submitBtn?.querySelector('.btn-submit-text');
+        const loadingEl = submitBtn?.querySelector('.btn-submit-loading');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.classList.add('is-loading');
+            submitBtn.setAttribute('aria-busy', 'true');
+            if (textEl) textEl.hidden = true;
+            if (loadingEl) loadingEl.hidden = false;
+        }
+        rsvpForm.querySelectorAll('input, textarea, button[type="submit"]').forEach((el) => {
+            el.disabled = true;
+        });
+
         localStorage.setItem('rsvps', JSON.stringify([...(JSON.parse(localStorage.getItem('rsvps') || '[]')), formData]));
-        
+
         if (GOOGLE_SHEETS_URL) {
             try {
                 const params = new URLSearchParams({
@@ -309,7 +324,7 @@ if (rsvpForm) {
                 await fetch(GOOGLE_SHEETS_URL + '?' + params.toString(), { method: 'GET' });
             } catch (err) {}
         }
-        
+
         const formWrapper = document.getElementById('rsvpFormWrapper');
         if (formWrapper) formWrapper.style.display = 'none';
         rsvpSuccess.style.display = 'block';

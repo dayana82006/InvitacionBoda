@@ -1562,11 +1562,30 @@ body {
     transition: all var(--transition-base);
     margin-top: 22px;
     min-height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55em;
 }
 
-.btn-submit:hover {
+.btn-submit:hover:not(:disabled):not(.is-loading) {
     background: #5a6b4c;
     transform: translateY(-2px);
+}
+
+.btn-submit:disabled,
+.btn-submit.is-loading {
+    cursor: wait;
+    pointer-events: none;
+    opacity: 0.92;
+    transform: none;
+}
+
+.btn-submit-loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
 }
 
 /* Footer decorativo con script */
